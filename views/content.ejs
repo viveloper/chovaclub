@@ -1,0 +1,49 @@
+<% layout('layout/layout')%>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <th>제목</th>
+                <td colspan="7"><%= post.title %></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td><span><%= post.nickname %></span></td>
+                <th>작성일</th>
+                <td><span><%= post.date_time %></span></td>
+                <th>조회</th>
+                <td><%= post.views %></td>
+                <th>추천</th>
+                <td><%= post.recommendation %></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        <pre><%= post.content %></pre>
+    </div>
+
+    <% if(alreayRecommendation) {%>
+    <div style="color: red;">이미 추천한 게시물 입니다.</div>
+    <%}%>
+
+    <% if(loginUser) {%>
+            <div>
+                <a href="/board/<%= boardAlias %>/<%= post.id %>/recommendation">추천하기</a>
+            </div>
+        <% if(loginUser.email === 'admin' || loginUser.nickname === post.nickname) {%>
+            <div>
+                <a href="/board/<%= boardAlias %>/<%= post.id %>/update">수정하기</a>
+                <form action="/board/delete_process" method="POST">
+                    <input type="hidden" name="postId" value="<%= post.id %>">
+                    <input type="hidden" name="boardAlias" value="<%= boardAlias %>">
+                    <input type="submit" id="delete" style="display: none;">
+                    <a onclick="document.querySelector('#delete').click();" style="cursor: pointer;">삭제하기</a>
+                </form>
+            </div>
+        <%}%>
+    <%}%>
+    <div>
+        <a href="/board/<%= boardAlias %>">목록보기</a>
+    </div>
+</div>

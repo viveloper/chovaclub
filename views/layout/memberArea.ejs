@@ -1,0 +1,17 @@
+<div>
+    <% if(!loginUser){%>
+    <span>
+        <a href="/signin">회원가입</a>
+        <span>|</span>        
+        <a href="/auth/login">로그인</a>
+        <span>|</span>        
+        <a href="/auth/google">구글로 로그인</a>
+    </span>
+    <%} else{%>
+    <span>
+        <a><%= loginUser.nickname %></a>
+        <span>|</span>
+        <a href="/auth/logout_process">로그아웃</a>
+    </span>
+    <%}%>
+</div>

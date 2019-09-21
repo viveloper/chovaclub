@@ -1,0 +1,13 @@
+<ul>
+    <% for (var i = 0; i < category.length; i++) {%>
+    <li><%= category[i].name %>
+        <div>
+        <ul>
+            <% for (var j = 0; j < category[i].boardList.length; j++) {%>
+            <li><a href="/board/<%= category[i].boardList[j].alias %>"><%= category[i].boardList[j].name %></a></li>
+            <%}%>
+        </ul>
+        </div>
+    </li>
+    <%}%>
+</ul>

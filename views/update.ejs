@@ -1,0 +1,27 @@
+<% layout('layout/layout')%>
+<div>
+    <form method="POST" action="/board/<%= boardAlias %>/<%= post.id %>">
+        <dl>
+            <dt style="float: left;">제목</dt>
+            <dd><input type="text" maxlength="50" size="50" value="<%= post.title %>" name="title" autocomplete="Off"
+                    role="textbox" aria-autocomplete="list" aria-haspopup="true"></dd>
+        </dl>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>내용</th>
+                        <td><textarea rows="15" cols="80" name="content"><%= post.content %></textarea><br></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="text" name="member_id" style="display: none;" value="<%= post.member_id %>">
+        </div>
+        <div class="bbs_bottom_btns">
+                <div>
+                    <input type="submit" value="수정완료">
+                    <input type="reset" value="취소하기" onclick="window.location.href='/'">
+                </div>
+            </div>
+    </form>
+</div>

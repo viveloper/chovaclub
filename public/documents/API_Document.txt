@@ -1,0 +1,2 @@
+/restapi/categories
+/restapi/board/{boardAlias}
